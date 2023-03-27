@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Set;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class AccountController {
     @Autowired
     private final AccountService accountService;

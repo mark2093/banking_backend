@@ -1,5 +1,5 @@
 package com.simraninovation.bankingApi.model;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @Entity
-@NoArgsConstructor
+//@NoArgsConstructor
 @Table(name="User")
 public class User {
 
@@ -57,19 +57,19 @@ public class User {
 	}
 
 	public String getFirstName() {
-		return FirstName;
+		return firstName;
 	}
 
 	public void setFirstName(String firstName) {
-		FirstName = firstName;
+		firstName = firstName;
 	}
 
 	public String getLastName() {
-		return LastName;
+		return lastName;
 	}
 
 	public void setLastName(String lastName) {
-		LastName = lastName;
+		lastName = lastName;
 	}
 
 	public String getPhoneNo() {
@@ -91,15 +91,15 @@ public class User {
 		this.id = id;
 		this.email = email;
 		this.password = password;
-		FirstName = firstName;
-		LastName = lastName;
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.phoneNo = phoneNo;
 	}
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", email=" + email + ", password=" + password + ", FirstName=" + FirstName
-				+ ", LastName=" + LastName + ", phoneNo=" + phoneNo + "]";
+		return "User [id=" + id + ", email=" + email + ", password=" + password + ", FirstName=" + firstName
+				+ ", LastName=" + lastName + ", phoneNo=" + phoneNo + "]";
 	}
 	
 	

@@ -3,7 +3,7 @@ package com.simraninovation.bankingApi.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
@@ -12,7 +12,7 @@ import org.springframework.data.annotation.CreatedDate;
 import java.io.Serializable;
 import java.util.Date;
 
-import static jakarta.persistence.TemporalType.TIMESTAMP;
+import static javax.persistence.TemporalType.TIMESTAMP;
 
 @Data
 @Entity
