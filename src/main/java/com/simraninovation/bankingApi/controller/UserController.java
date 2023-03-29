@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Set;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class UserController {
 
     @Autowired
@@ -20,7 +21,7 @@ public class UserController {
 
     @PostMapping("/user/new")
     public String saveUserDetails(@RequestBody User user) {
-        System.out.println(user);
+        System.out.println("IN CONTRAOL"+user);
         User save = userService.save(user);
         return "Successfully Added " ;
     }
@@ -39,5 +40,13 @@ public class UserController {
 
 
     }
+    @GetMapping("/users/me/{email}")
+    @ResponseBody
+    public User getCurrentUser(@PathVariable("email") String usr_email)  {
+        return userService.findByEmail(usr_email);
+
+
+    }
+
 
 }

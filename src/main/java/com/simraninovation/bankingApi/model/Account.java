@@ -42,9 +42,9 @@ public class Account implements Serializable {
     @Column(name="Balance")
     private String balance;
 
-    @OneToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name="userId")
-//    @JsonBackReference
+    @OneToOne
+    @JoinColumn(name="userId", referencedColumnName = "id")
+    @JsonProperty
     private User userId;
 
     public Account(User userId) {

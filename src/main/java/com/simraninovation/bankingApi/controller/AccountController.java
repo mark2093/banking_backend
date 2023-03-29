@@ -1,10 +1,12 @@
 package com.simraninovation.bankingApi.controller;
 
 import com.simraninovation.bankingApi.model.Account;
+import com.simraninovation.bankingApi.model.User;
 import com.simraninovation.bankingApi.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -12,6 +14,8 @@ import java.util.Set;
 public class AccountController {
     @Autowired
     private final AccountService accountService;
+
+
 
     public AccountController(AccountService accountService) {
         this.accountService = accountService;
@@ -35,6 +39,14 @@ public class AccountController {
     Set<Account> getAccounts()  {
         return accountService.findAll();
 
+
+    }
+
+    @GetMapping("/account/user/{userId}")
+    @ResponseBody
+    public List<Account> getUserAccount(@PathVariable("userId") User user) {
+
+        return accountService.finByUser_Id(user);
 
     }
 

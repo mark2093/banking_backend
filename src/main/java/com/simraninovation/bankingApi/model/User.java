@@ -6,18 +6,20 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Data
-@Setter
-@Getter
+//@Setter
+//@Getter
 @Entity
 //@NoArgsConstructor
-@Table(name="User")
+@Table(name="User",uniqueConstraints={
+		@UniqueConstraint(columnNames = {"Email"})
+})
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
 
-    @Column(name="Email")
+    @Column(name="Email", unique = true)
 	private String email;
 	
 	@Column(name="Password")
@@ -32,13 +34,6 @@ public class User {
 	@Column(name="PhoneNo")
 	private String phoneNo;
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public String getEmail() {
 		return email;
@@ -61,7 +56,7 @@ public class User {
 	}
 
 	public void setFirstName(String firstName) {
-		firstName = firstName;
+		this.firstName = firstName;
 	}
 
 	public String getLastName() {
@@ -69,7 +64,7 @@ public class User {
 	}
 
 	public void setLastName(String lastName) {
-		lastName = lastName;
+		this.lastName = lastName;
 	}
 
 	public String getPhoneNo() {
@@ -79,15 +74,19 @@ public class User {
 	public void setPhoneNo(String phoneNo) {
 		this.phoneNo = phoneNo;
 	}
-	
 
-	public User() {
-		super();
-		// TODO Auto-generated constructor stub
+	@Override
+	public String toString() {
+		return "User{" +
+				"email='" + email + '\'' +
+				", password='" + password + '\'' +
+				", firstName='" + firstName + '\'' +
+				", lastName='" + lastName + '\'' +
+				", phoneNo='" + phoneNo + '\'' +
+				'}';
 	}
 
 	public User(Long id, String email, String password, String firstName, String lastName, String phoneNo) {
-		super();
 		this.id = id;
 		this.email = email;
 		this.password = password;
@@ -96,18 +95,6 @@ public class User {
 		this.phoneNo = phoneNo;
 	}
 
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", email=" + email + ", password=" + password + ", FirstName=" + firstName
-				+ ", LastName=" + lastName + ", phoneNo=" + phoneNo + "]";
+	public User() {
 	}
-	
-	
-	
-	
-	
- 
-	
-    
-
 }
