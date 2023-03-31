@@ -28,7 +28,7 @@ public class Transactions {
     private Date createdDate;
 
     @OneToOne
-    @JoinColumn(name="accountId")
+    @JoinColumn(name="accountId" , referencedColumnName = "id")
     private Account accountId;
 
     public Transactions(Account accountId) {

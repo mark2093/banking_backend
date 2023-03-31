@@ -1,6 +1,8 @@
 package com.simraninovation.bankingApi.service.impl;
 
+import com.simraninovation.bankingApi.model.Account;
 import com.simraninovation.bankingApi.model.Transactions;
+import com.simraninovation.bankingApi.repository.AccountRepository;
 import com.simraninovation.bankingApi.repository.TransactionRepository;
 import com.simraninovation.bankingApi.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +16,12 @@ import java.util.Set;
 public class TransactionServiceImp implements TransactionService {
     @Autowired
     private final TransactionRepository transactionRepository;
+    @Autowired
+    private final AccountRepository accountRepository;
 
-    public TransactionServiceImp(TransactionRepository transactionRepository) {
+    public TransactionServiceImp(TransactionRepository transactionRepository, AccountRepository accountRepository) {
         this.transactionRepository = transactionRepository;
+        this.accountRepository = accountRepository;
     }
 
     @Override
@@ -34,18 +39,11 @@ public class TransactionServiceImp implements TransactionService {
         return transactionRepository.findById(id).orElse(null);
     }
 
-    @Override
-    public List<Object> findByaccountId(String Id) {
-        System.out.println(Id);
-        List<Object> rawList = transactionRepository.accountId(Id);
-        List<Object> resultList = new ArrayList(rawList.size());
-        for (Object rw : rawList) {
-            System.out.println(rw);
-            resultList.add(rw);
-            return resultList;
 
-        }
-        return resultList;
+
+    @Override
+    public List<Transactions> findByAccount_Id(Account account) {
+        return transactionRepository.findByAccountId(account);
     }
 
     @Override

@@ -10,4 +10,6 @@ public interface UserService extends CrudService<User, Long>{
     void deleteById(Long idToDelete);
 
     User findByEmail(String email);
+
+
 }

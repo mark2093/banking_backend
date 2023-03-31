@@ -21,7 +21,7 @@ public class PayeeDetails {
     private String accountNumber;
 
     @Column(name="IFSC",length=11)
-    private String ifci;
+    private String ifsc;
 
     @Column(name="Name")
     private String name;
@@ -31,7 +31,7 @@ public class PayeeDetails {
     private Date createdDate;
 
     @OneToOne
-    @JoinColumn(name="accountId")
+    @JoinColumn(name="accountId", referencedColumnName = "id")
     private Account accountId;
 
 }

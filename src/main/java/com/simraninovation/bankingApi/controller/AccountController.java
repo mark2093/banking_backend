@@ -27,10 +27,16 @@ public class AccountController {
         Account save = accountService.save(account);
         return "Successfully Added " ;
     }
+    @GetMapping("/account/acctNum/{acctNumber}")
+    @ResponseBody
+    public Account getAccountNumber(@PathVariable("acctNumber") String acct_id) {
+        return accountService.findByaccountNumber(acct_id);
+
+    }
     @GetMapping("/account/{id}")
     @ResponseBody
-    public Account getAccounteId(@PathVariable("id") String acct_id) {
-        return accountService.findByaccountNumber(acct_id);
+    public Account getAccountId(@PathVariable("id") Long acct_id) {
+        return accountService.findById(acct_id);
 
     }
 
@@ -48,6 +54,11 @@ public class AccountController {
 
         return accountService.finByUser_Id(user);
 
+    }
+
+    @RequestMapping(value="account/update", method = RequestMethod.POST)
+    public void updateAccountBalance( @RequestBody Account account){
+        accountService.updateAccountBalance(account);
     }
 
 
