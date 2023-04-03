@@ -4,8 +4,11 @@ package com.simraninovation.bankingApi.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.persistence.*;
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 
@@ -17,6 +20,8 @@ import static javax.persistence.TemporalType.TIMESTAMP;
 @Data
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
+@ToString
 @Table(name="Account")
 
 public class Account implements Serializable {
@@ -51,7 +56,5 @@ public class Account implements Serializable {
         this.userId = userId;
     }
 
-    public void setUserId(User userId) {
-        this.userId = userId;
-    }
+
 }
