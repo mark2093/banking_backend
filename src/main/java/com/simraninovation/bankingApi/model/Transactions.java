@@ -1,6 +1,6 @@
 package com.simraninovation.bankingApi.model;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
@@ -28,7 +28,7 @@ public class Transactions {
     private Date createdDate;
 
     @OneToOne
-    @JoinColumn(name="accountId")
+    @JoinColumn(name="accountId" , referencedColumnName = "id")
     private Account accountId;
 
     public Transactions(Account accountId) {

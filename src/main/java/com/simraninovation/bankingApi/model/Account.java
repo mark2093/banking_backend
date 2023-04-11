@@ -3,20 +3,25 @@ package com.simraninovation.bankingApi.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.*;
+import javax.persistence.*;
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 
 import java.io.Serializable;
 import java.util.Date;
 
-import static jakarta.persistence.TemporalType.TIMESTAMP;
+import static javax.persistence.TemporalType.TIMESTAMP;
 
 @Data
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
+@ToString
 @Table(name="Account")
 
 public class Account implements Serializable {
@@ -42,16 +47,14 @@ public class Account implements Serializable {
     @Column(name="Balance")
     private String balance;
 
-    @OneToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name="userId")
-//    @JsonBackReference
+    @OneToOne
+    @JoinColumn(name="userId", referencedColumnName = "id")
+    @JsonProperty
     private User userId;
 
     public Account(User userId) {
         this.userId = userId;
     }
 
-    public void setUserId(User userId) {
-        this.userId = userId;
-    }
+
 }

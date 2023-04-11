@@ -14,6 +14,11 @@ import java.util.Set;
 public class UserServiceImp implements UserService {
     @Autowired
     private UserRepository userRepository;
+
+    public UserServiceImp(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
     @Override
     public Set<User> findAll() {
         Set<User>  userDetails= new HashSet<>();
@@ -40,5 +45,12 @@ public class UserServiceImp implements UserService {
     @Override
     public void deleteById(Long idToDelete) {
         userRepository.deleteById(idToDelete);
+    }
+
+
+
+    @Override
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
     }
 }
