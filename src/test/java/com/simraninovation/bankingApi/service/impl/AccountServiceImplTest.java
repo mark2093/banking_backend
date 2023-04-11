@@ -75,7 +75,7 @@ class AccountServiceImplTest {
     Optional<Account> accountOptional = Optional.of(account);
     when(accountRepository.findById(anyLong())).thenReturn(accountOptional);
 
-    Account accountReturned = accountService.findById(2L);
+    Account accountReturned = accountService.findById(1L);
 
     assertThat(accountOptional, is(Optional.of(accountReturned)));
     verify(accountRepository, times(1)).findById(1L);
